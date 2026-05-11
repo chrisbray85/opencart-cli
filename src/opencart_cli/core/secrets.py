@@ -33,7 +33,7 @@ def get_secret(profile: str, key: str, env_var: str | None = None) -> str | None
     """Resolve a secret in this order: env var → keyring → None.
 
     Args:
-        profile: profile name (e.g. "rewnd")
+        profile: profile name (e.g. "myshop")
         key:     secret kind (e.g. "db_password")
         env_var: optional env var name to check first (e.g. "OPENCART_DB_PASS")
     """
