@@ -24,18 +24,18 @@ That's it. You're operating an OpenCart store from the terminal.
 $ opencart sales summary --days 7
 
 Sales — last 7 days
-  Revenue: £216,378.98
-  Orders:  2,007
-  AOV:     £107.81
-  Daily £: ▇▇██▆▃▅
-  Daily n: ▇▇██▆▃▅
+  Revenue: £12,847.50
+  Orders:  142
+  AOV:     £90.47
+  Daily £: ▅▆▇█▆▄▅
+  Daily n: ▆▅█▇▆▃▅
                           Top sellers
 ┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
 ┃ product_id ┃ name                                     ┃  qty ┃    revenue ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━┩
-│         74 │ BPC-157 5mg                              │ 1598 │ £26,643.75 │
-│        128 │ GHK-Cu 50mg (Copper Peptide)             │  976 │ £25,932.26 │
-│        179 │ Tesamorelin 10mg                         │  423 │ £24,501.00 │
+│         18 │ Mechanical Keyboard — Brown Switches     │   34 │  £2,550.00 │
+│         42 │ Wireless Mouse Pro                       │   56 │  £1,680.00 │
+│         73 │ USB-C Hub 4-Port                         │   38 │    £760.00 │
 └────────────┴──────────────────────────────────────────┴──────┴────────────┘
 ```
 
@@ -119,12 +119,12 @@ Generated SQL:
 
 Run this query? [Y/n]: y
 
-┏━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
-┃ product_id ┃ model      ┃ name             ┃  price ┃ quantity ┃
-┣━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━╋━━━━━━━━╋━━━━━━━━━━┫
-┃ 42         ┃ BPC-157-30 ┃ BPC-157 30ct     ┃  £9.99 ┃        3 ┃
-┃ 87         ┃ TB-500-10  ┃ TB-500 10mg      ┃  £8.50 ┃        2 ┃
-┗━━━━━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━┻━━━━━━━━┻━━━━━━━━━━┛
+┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+┃ product_id ┃ model         ┃ name               ┃  price ┃ quantity ┃
+┣━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━╋━━━━━━━━━━┫
+┃ 42         ┃ MOUSE-WL-01   ┃ Wireless Mouse Pro ┃  £9.99 ┃        3 ┃
+┃ 87         ┃ CABLE-USBC-1M ┃ USB-C Cable 1m     ┃  £8.50 ┃        2 ┃
+┗━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━┻━━━━━━━━━━┛
 ```
 
 Set `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` in your environment. The CLI picks whichever it finds. AI only ever generates SELECT statements — mutations are blocked.
