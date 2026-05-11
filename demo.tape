@@ -1,60 +1,69 @@
-# VHS tape — record a GIF demo of opencart-cli.
+# VHS tape — records the opencart-cli demo GIF.
 # Install vhs: brew install vhs
-# Record:     vhs demo.tape
-# Output:     demo.gif
+# Record:      vhs demo.tape    (run from the repo root)
+# Output:      demo.gif
 #
-# Before running, ensure you have:
-#   - opencart-cli installed (`pip install -e .`)
-#   - A profile configured (`opencart init`)
-#   - Your terminal at a comfy size
+# Uses `opencart demo` subcommands, which render the real formatters
+# against canned data — no profile or store connection needed.
 
 Output demo.gif
 
-Set Shell "zsh"
+Set Shell "bash"
 Set FontSize 14
-Set Width 1000
-Set Height 620
+Set Width 1100
+Set Height 700
 Set Theme "TokyoNight"
-Set TypingSpeed 50ms
+Set TypingSpeed 35ms
 Set PlaybackSpeed 1.0
 
-# Intro
+# Tell users we're running from a venv they'd typically have on PATH.
+# For the tape we use the venv path explicitly so it works for anyone
+# who clones + installs.
+Hide
+Type "alias oc=./.venv/bin/opencart"
+Enter
+Show
+
+# Intro line
 Type "# opencart-cli — operate your OpenCart store from the terminal"
 Sleep 600ms
 Enter
-Sleep 800ms
+Sleep 1s
 
-# Doctor
-Type "opencart doctor"
-Sleep 300ms
-Enter
-Sleep 4s
-
-# Products
-Type "clear"
-Enter
-Type "opencart products list --low-stock-under 5"
+# Doctor — fast win, health check style
+Type "oc demo doctor"
 Sleep 300ms
 Enter
 Sleep 3s
 
-# Sales — the visual one
+# Stock — table with money formatting
 Type "clear"
 Enter
-Type "opencart sales summary --days 7"
+Type "oc demo products"
+Sleep 300ms
+Enter
+Sleep 3s
+
+# Sales — the money shot with sparkline + top sellers
+Type "clear"
+Enter
+Type "oc demo sales"
 Sleep 300ms
 Enter
 Sleep 4s
 
-# AI
+# Orders
 Type "clear"
 Enter
-Type 'opencart ask "what is our best-selling product this week?"'
+Type "oc demo orders"
 Sleep 300ms
 Enter
-Sleep 6s
+Sleep 3s
 
 # Wrap
-Type "# pip install opencart-cli"
+Type "clear"
 Enter
-Sleep 1.5s
+Type "# pip install opencart-cli  →  opencart init  →  ask, watch, shell, ..."
+Sleep 2s
+Enter
+Sleep 1s

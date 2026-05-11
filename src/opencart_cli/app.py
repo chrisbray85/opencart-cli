@@ -14,6 +14,7 @@ from . import __version__
 from .commands import (
     ask,
     customers,
+    demo,
     doctor,
     init,
     orders,
@@ -93,6 +94,7 @@ def main(
 # ---------- Register subcommands ----------
 
 app.add_typer(profile.app, name="profile", help="Manage store profiles.")
+app.add_typer(demo.app, name="demo", help="Try the CLI with canned data — no profile needed.")
 app.add_typer(products.app, name="products", help="List, inspect, and update products.")
 app.add_typer(orders.app, name="orders", help="List and inspect orders.")
 app.add_typer(customers.app, name="customers", help="List and search customers.")
