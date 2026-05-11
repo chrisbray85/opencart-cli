@@ -53,7 +53,7 @@ def run(
         existing = ", ".join(cli.config.profiles) or "(none yet)"
         _console_err.print(f"[dim]Existing profiles:[/dim] {existing}")
         name = Prompt.ask(
-            "Profile name (e.g. 'rewnd-prod', 'staging', 'localdev')",
+            "Profile name (e.g. 'prod', 'staging', 'localdev')",
             default="default",
         ).strip()
     if name in cli.config.profiles:
