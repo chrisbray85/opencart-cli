@@ -63,10 +63,21 @@ Sales — last 7 days
 
 ### Install
 
+**Recommended — using `pipx`** (puts `opencart` on your PATH globally in an isolated environment):
+
 ```bash
-pip install opencart-cli                     # core CLI
-pip install 'opencart-cli[ai]'               # plus `opencart ask` (Claude/OpenAI)
+brew install pipx && pipx ensurepath
+pipx install opencart-cli                    # core CLI
+pipx install 'opencart-cli[ai]'              # plus `opencart ask` (Claude/OpenAI)
 ```
+
+**Or plain `pip`** (works but you'll need to manage your own venv or `pip install --user`):
+
+```bash
+pip install opencart-cli
+```
+
+> If `opencart` is "command not found" after a plain `pip install`, the script likely landed somewhere not on your PATH. `pipx` solves this universally.
 
 ### Configure (interactive)
 
