@@ -20,26 +20,11 @@ That's it. You're operating an OpenCart store from the terminal.
 
 ## What you get
 
-```
-$ opencart sales summary --days 7
-
-Sales — last 7 days
-  Revenue: £12,847.50
-  Orders:  142
-  AOV:     £90.47
-  Daily £: ▅▆▇█▆▄▅
-  Daily n: ▆▅█▇▆▃▅
-                          Top sellers
-┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
-┃ product_id ┃ name                                     ┃  qty ┃    revenue ┃
-┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━┩
-│         18 │ Mechanical Keyboard — Brown Switches     │   34 │  £2,550.00 │
-│         42 │ Wireless Mouse Pro                       │   56 │  £1,680.00 │
-│         73 │ USB-C Hub 4-Port                         │   38 │    £760.00 │
-└────────────┴──────────────────────────────────────────┴──────┴────────────┘
-```
+![opencart-cli demo](demo.svg)
 
 — sparklines, pretty tables, money formatting, all out of the box. Pipe it through `jq` and it switches to JSON automatically.
+
+> **Want to see it yourself in your own terminal?** Run `opencart demo sales` (or `products`, `orders`, `doctor`, `all`) — works without setting up a profile, uses canned data through the real rendering pipeline.
 
 ---
 
@@ -268,6 +253,7 @@ If anything fails, the message tells you what to fix.
 
 ```
 opencart init                    Interactive setup wizard
+opencart demo <sales|products|orders|doctor|all>   Try the CLI without a profile
 opencart doctor                  Diagnostic checks
 opencart ask "..."               AI natural-language query
 opencart shell                   Interactive REPL
