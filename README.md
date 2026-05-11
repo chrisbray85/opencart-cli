@@ -20,7 +20,7 @@ That's it. You're operating an OpenCart store from the terminal.
 
 ## What you get
 
-![opencart-cli demo](demo.svg)
+![opencart-cli demo](demo.gif)
 
 — sparklines, pretty tables, money formatting, all out of the box. Pipe it through `jq` and it switches to JSON automatically.
 
