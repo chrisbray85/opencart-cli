@@ -1,0 +1,114 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opencart-cli"
+version = "1.0.0"
+description = "The OpenCart CLI you wish came in the box — query, edit, and operate your OpenCart store from the terminal. AI-powered queries, live order watching, interactive shell."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Chris Bray" },
+]
+keywords = [
+    "opencart",
+    "cli",
+    "ecommerce",
+    "terminal",
+    "shell",
+    "ai",
+    "devops",
+    "shopify-alternative",
+    "developer-tools",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Terminals",
+]
+dependencies = [
+    "typer>=0.12.0",
+    "rich>=13.7.0",
+    "paramiko>=3.4.0",
+    "PyYAML>=6.0",
+    "keyring>=24.0",
+    "prompt-toolkit>=3.0.43",
+    "platformdirs>=4.0",
+]
+
+[project.optional-dependencies]
+ai = [
+    "anthropic>=0.40.0",
+    "openai>=1.50.0",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6.0",
+    "mypy>=1.10",
+    "types-PyYAML",
+    "types-paramiko",
+]
+
+[project.scripts]
+opencart = "opencart_cli.__main__:app"
+oc = "opencart_cli.__main__:app"
+
+[project.urls]
+Homepage = "https://github.com/chrisbray85/opencart-cli"
+Repository = "https://github.com/chrisbray85/opencart-cli"
+Issues = "https://github.com/chrisbray85/opencart-cli/issues"
+Changelog = "https://github.com/chrisbray85/opencart-cli/releases"
+"MCP version" = "https://github.com/chrisbray85/opencart-mcp"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opencart_cli"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/opencart_cli",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "RUF"]
+ignore = [
+    "E501",   # line length — formatter handles
+    "B008",   # typer requires `typer.Option(...)` as default value
+    "B027",   # Connection.close() is intentionally a no-op default, not abstract
+    "N818",   # ConnectionError would shadow builtin; ConnectionFailed is intentional
+    "RUF001", # the ℹ glyph in doctor.py is deliberate visual design
+    "RUF046", # int(round(...)) — micro-optimization, clarity wins
+    "SIM102", # nested `if`s are often more readable than chained `and`
+    "SIM105", # try/except/pass is fine; contextlib.suppress is also fine
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+warn_unused_ignores = true
+warn_redundant_casts = true

@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  build-and-publish:
+    name: Build, publish to PyPI, create GitHub Release
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/opencart-cli
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install build
+        run: pip install build
+      - name: Build sdist + wheel
+        run: python -m build
+      - name: List artifacts
+        run: ls -la dist/
+
+      - name: Publish to PyPI (trusted publishing — no secrets needed)
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_REF: ${{ github.ref }}
+          REPO: ${{ github.repository }}
+        run: |
+          TAG="${TAG_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes "See [CHANGELOG.md](https://github.com/${REPO}/blob/main/CHANGELOG.md) for details. Install with: \`pip install opencart-cli==${VERSION}\`." \
+            dist/*
